@@ -15,16 +15,16 @@ function App() {
   let interval;
 
   const startTimer = () => {
-    const countdownDate = new Date("September 30, 2021").getTime();
+    const countdownDate = new Date("September 1, 2021").getTime();
 
     interval = setInterval(() => {
       const now = new Date().getTime();
       const distance = countdownDate - now;
 
-      const days = Math.floor(distance / (24 * 60 * 60 * 1000));
-      const hours = Math.floor((distance % (24 * 60 * 60 * 1000)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (60 * 60 * 1000)) / (1000 * 60));
-      const seconds = Math.floor((distance % (60 * 1000)) / (1000));
+      const days = Math.floor(distance / (24 * 60 * 60 * 1000)).toString().padStart(2, "0");
+      const hours = Math.floor((distance % (24 * 60 * 60 * 1000)) / (1000 * 60 * 60)).toString().padStart(2, "0");
+      const minutes = Math.floor((distance % (60 * 60 * 1000)) / (1000 * 60)).toString().padStart(2, "0");
+      const seconds = Math.floor((distance % (60 * 1000)) / (1000)).toString().padStart(2, "0");
 
       if (distance < 0) {
         clearInterval(interval.current);
