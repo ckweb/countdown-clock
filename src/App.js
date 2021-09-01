@@ -5,7 +5,6 @@ import React, {
 } from "react";
 import Clock from './components/Clock';
 
-
 function App() {
   const [timerDays, setTimerDays] = useState();
   const [timerHours, setTimerHours] = useState();
@@ -15,7 +14,7 @@ function App() {
   let interval;
 
   const startTimer = () => {
-    const countdownDate = new Date("September 1, 2021").getTime();
+    const countdownDate = new Date("September 15, 2021").getTime();
 
     interval = setInterval(() => {
       const now = new Date().getTime();
@@ -42,23 +41,15 @@ function App() {
     startTimer();
   });
 
-  return ( <
-    div className = "App" >
-    <
-    Clock timerDays = {
-      timerDays
-    }
-    timerHours = {
-      timerHours
-    }
-    timerMinutes = {
-      timerMinutes
-    }
-    timerSeconds = {
-      timerSeconds
-    }
-    /> <
-    /div>
+  return ( 
+    <div className = "App" >
+      <Clock 
+        timerDays={timerDays} 
+        timerHours={timerHours}
+        timerMinutes={timerMinutes}
+        timerSeconds={timerSeconds}
+      /> 
+    </div>
   );
 }
 
