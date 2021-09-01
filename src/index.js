@@ -6,5 +6,5 @@ ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('countdown-clock')
+  document.getElementById('countdown-clock-app-root')
 );

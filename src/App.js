@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import React, {
   useState,
   useEffect
@@ -42,7 +42,7 @@ function App() {
   });
 
   return ( 
-    <div className = "App" >
+    <div className="countdown-clock-app">
       <Clock 
         timerDays={timerDays} 
         timerHours={timerHours}
