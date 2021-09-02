@@ -10,6 +10,7 @@ function App() {
   const [timerHours, setTimerHours] = useState();
   const [timerMinutes, setTimerMinutes] = useState();
   const [timerSeconds, setTimerSeconds] = useState();
+  const [isCountdownComplete, setIsCountdownComplete] = useState();
 
   let interval;
 
@@ -19,6 +20,12 @@ function App() {
     interval = setInterval(() => {
       const now = new Date().getTime();
       const distance = countdownDate - now;
+
+      if (distance <= 0) {
+        setIsCountdownComplete(true);
+      } else {
+        setIsCountdownComplete(false);
+      }
 
       const days = Math.floor(distance / (24 * 60 * 60 * 1000)).toString().padStart(2, "0");
       const hours = Math.floor((distance % (24 * 60 * 60 * 1000)) / (1000 * 60 * 60)).toString().padStart(2, "0");
@@ -48,6 +55,7 @@ function App() {
         timerHours={timerHours}
         timerMinutes={timerMinutes}
         timerSeconds={timerSeconds}
+        isCountdownComplete={isCountdownComplete}
       /> 
     </div>
   );

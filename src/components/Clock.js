@@ -1,13 +1,21 @@
 import React, { Fragment } from 'react';
 
-const Clock = ({ timerDays, timerHours, timerMinutes, timerSeconds }) => {
+const Clock = ({ 
+      timerDays, 
+      timerHours, 
+      timerMinutes, 
+      timerSeconds, 
+      isCountdownComplete 
+    }) => {
   let dayWord = "DAYS";
   if (timerDays === "01") {
     dayWord = "DAY";
   }
 
   return <Fragment>
-    <section className="timer-container">
+    <section className={
+      `timer-container ${isCountdownComplete ? 'hidden' : ''}`
+    }>
       <section className="timer">
         <div className="clock">
           <section className={`days ${timerDays === '00' ? 'hidden' : ''}`}>
@@ -39,7 +47,8 @@ Clock.defaultProps = {
   timerDays: 0,
   timerHours: 0,
   timerMinutes: 0,
-  timerSeconds: 0
+  timerSeconds: 0,
+  isCountdownComplete: true
 };
 
 export default Clock;
