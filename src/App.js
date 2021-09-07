@@ -1,9 +1,8 @@
 import './App.scss';
-import React, {
-  useState,
-  useEffect
-} from "react";
+import React, { useState, useEffect } from "react";
 import Clock from './components/Clock';
+
+let distance;
 
 function App() {
   const [timerDays, setTimerDays] = useState();
@@ -15,11 +14,13 @@ function App() {
   let interval;
 
   const startTimer = () => {
-    const countdownDate = window.countdownDate || new Date("September 30, 2021").getTime();
+    // The clock reads settings in from window scope.
+    const countdownDate = window.countdownDate || new Date("September 5, 2021").getTime();
+    const showDaysInHours = window.showDaysInHours || false;
 
     interval = setInterval(() => {
       const now = new Date().getTime();
-      const distance = countdownDate - now;
+      distance = countdownDate - now;
 
       if (distance <= 0) {
         setIsCountdownComplete(true);
@@ -35,8 +36,13 @@ function App() {
       if (distance < 0) {
         clearInterval(interval.current);
       } else {
-        setTimerDays(days);
-        setTimerHours(hours);
+        if (showDaysInHours) {
+          setTimerDays("00"); 
+          setTimerHours((getDaysInHours() + parseInt(hours)).toString().padStart(2, "0"));
+        } else {
+          setTimerDays(days); 
+          setTimerHours(hours);
+        }
         setTimerMinutes(minutes);
         setTimerSeconds(seconds);
       }
@@ -59,6 +65,14 @@ function App() {
       /> 
     </div>
   );
+}
+
+// Returns the day portion in hours. This is not the total amount of hours left.
+// It's just the day portion, but converted to hours.
+function getDaysInHours() {
+  if (!distance) return;
+  const daysInHours = Math.floor(distance / (24 * 60 * 60 * 1000)) * 24;
+  return daysInHours;
 }
 
 export default App;

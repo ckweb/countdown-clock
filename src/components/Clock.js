@@ -25,17 +25,17 @@ const Clock = ({
           <span className={`${timerDays === '00' ? 'hidden' : ''}`}>:</span>
           <section className="hours">
             <p>{timerHours}</p>
-            <small>HR</small>
+            <small>HRS</small>
           </section>{" "}
           <span>:</span>
           <section className="minutes">
             <p>{timerMinutes}</p>
-            <small>MIN</small>
+            <small>MINS</small>
           </section>{" "}
           <span>:</span>
           <section className="seconds">
             <p>{timerSeconds}</p>
-            <small>SEC</small>
+            <small>SECS</small>
           </section>
         </div>
       </section>
