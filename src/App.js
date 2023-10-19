@@ -15,7 +15,7 @@ function App() {
 
   const startTimer = () => {
     // The clock reads settings in from window scope.
-    const countdownDate = window.countdownDate || new Date("September 5, 2021").getTime();
+    const countdownDate = window.countdownDate || new Date("January 1, 2024").getTime();
     const showDaysInHours = window.showDaysInHours || false;
 
     interval = setInterval(() => {
